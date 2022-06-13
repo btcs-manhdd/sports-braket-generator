@@ -1,0 +1,21 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  overflow-y:visible;
+  overflow-x: hidden;
+  font-size: 1.15rem;
+  font-family: "Montserrat", sans-serif;
+  background-color: #6ae6e6;
+}
+.App{
+  margin: 16px;
+}

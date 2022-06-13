@@ -1,0 +1,21 @@
+.double{
+  max-width: 12%;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.box{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 8px;
+  border-left: 4px solid rgb(227, 56, 56);
+}
+.box:last-child{
+  border-top: 1px #333 solid;
+}
+.box-name{
+}
+.box-score{
+
+}

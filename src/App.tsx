@@ -1,15 +1,13 @@
-import React from "react"
 import "./App.css"
+import Round from "./components/Round/Round"
 
 function App() {
-
-
-
   return (
-    
     <div className="App">
-      Hello
-      <h1>Hello nhasssad</h1>
+      <Round quantity={8}/>
+      <Round quantity={4}/>
+      <Round quantity={2}/>
+      <Round quantity={1}/>
     </div>
   )
 }
