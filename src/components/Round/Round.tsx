@@ -6,9 +6,18 @@ interface Props {
   name: string
   left?: boolean
   right?: boolean
+  midLine?: boolean
+  longLine?: boolean
 }
 
-const Round: React.FC<Props> = ({ data, name, left, right }) => {
+const Round: React.FC<Props> = ({
+  data,
+  name,
+  left,
+  right,
+  midLine,
+  longLine
+}) => {
   return (
     <div className="relative flex flex-col justify-around mr-40 mt-8">
       <h1 className="absolute -top-4">{name}</h1>
@@ -19,6 +28,8 @@ const Round: React.FC<Props> = ({ data, name, left, right }) => {
           team2={item.team2}
           left={left}
           right={right}
+          midLine={midLine}
+          longLine={longLine}
         />
       ))}
     </div>

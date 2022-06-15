@@ -18,9 +18,15 @@ const App: React.FC = () => {
   return (
     <div className="h-screen flex ml-8 relative">
       <Round data={round16} name="Round16" right={true} />
-      <Round data={quarterFinals} name="QuarterFinals" right={true} left={true}/>
-      <Round data={semiFinals} name="SemiFinals" right={true} left={true}/>
-      <Round data={final} name="Final" left={true} />
+      <Round
+        data={quarterFinals}
+        name="QuarterFinals"
+        right={true}
+        left={true}
+        midLine={true}
+      />
+      <Round data={semiFinals} name="SemiFinals" right={true} left={true} />
+      <Round data={final} name="Final" left={true} longLine={true} />
     </div>
   )
 }
