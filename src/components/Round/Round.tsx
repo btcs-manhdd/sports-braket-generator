@@ -1,26 +1,25 @@
-import React from "react"
 import Double from "../Double/Double"
-import "./Round.css"
+import { rounds } from "../../interface"
 
-interface team {
-  name: string
-  score: number
-}
-
-interface rounds {
-  match: number
-  team1: team
-  team2: team
-}
 interface Props {
   data: rounds[]
+  name: string
+  left?: boolean
+  right?: boolean
 }
 
-const Round: React.FC<Props> = ({ data }) => {
+const Round: React.FC<Props> = ({ data, name, left, right }) => {
   return (
-    <div className="round">
-      {data.map(item => (
-        <Double team1={item.team1} team2={item.team2} />
+    <div className="relative flex flex-col justify-around mr-40 mt-8">
+      <h1 className="absolute -top-4">{name}</h1>
+      {data.map((item, index) => (
+        <Double
+          key={index}
+          team1={item.team1}
+          team2={item.team2}
+          left={left}
+          right={right}
+        />
       ))}
     </div>
   )

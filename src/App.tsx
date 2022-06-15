@@ -1,18 +1,6 @@
-import React from "react"
-import "./App.css"
 import Round from "./components/Round/Round"
 import { data } from "./data"
-
-interface team {
-  name: string
-  score: number
-}
-
-interface rounds {
-  match: number
-  team1: team
-  team2: team
-}
+import { rounds } from "./interface"
 
 const App: React.FC = () => {
   const {
@@ -28,11 +16,11 @@ const App: React.FC = () => {
   } = data
 
   return (
-    <div className="App">
-      <Round data={round16} />
-      <Round data={quarterFinals} />
-      <Round data={semiFinals} />
-      <Round data={final} />
+    <div className="h-screen flex ml-8 relative">
+      <Round data={round16} name="Round16" right={true} />
+      <Round data={quarterFinals} name="QuarterFinals" right={true} left={true}/>
+      <Round data={semiFinals} name="SemiFinals" right={true} left={true}/>
+      <Round data={final} name="Final" left={true} />
     </div>
   )
 }
