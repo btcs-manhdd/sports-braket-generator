@@ -43,7 +43,7 @@ const Double: React.FC<propsDouble> = ({
         <div
           className={`w-20 h-[2px] bg-white absolute translate-x-[-100%] 
         before:w-[2px] before:bg-white before:absolute before:translate-y-[-50%] before:h-40
-        ${midLine ? "before:h-20" : ""} ${longLine ? "before:h-80" : ""}
+        ${midLine ? "before:h-20" : ""} ${longLine ? "before:h-[344px]" : ""}
         `}
         ></div>
       ) : (

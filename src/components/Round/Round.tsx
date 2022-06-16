@@ -20,7 +20,7 @@ const Round: React.FC<Props> = ({
 }) => {
   return (
     <div className="relative flex flex-col justify-around mr-40 mt-8">
-      <h1 className="absolute -top-4">{name}</h1>
+      <h1 className="absolute -top-4 text-white text-xl">{name}</h1>
       {data.map((item, index) => (
         <Double
           key={index}
