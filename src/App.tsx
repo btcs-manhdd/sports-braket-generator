@@ -5,9 +5,7 @@ const App: React.FC = () => {
   return (
     <div className="relative w-full flex">
       <Search />
-      <div className="flex-1 bg-orange-400 h-screen">
-        {/* <TreeBraket /> */}
-      </div>
+    
     </div>
   )
 }
