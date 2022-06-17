@@ -71,7 +71,7 @@ const Search: React.FC = () => {
   return (
     <div className="relative flex w-full">
       {/* Form input */}
-      <div className="mt-10 pl-3 w-80 shadow-3xl">
+      <div className="mt-10 px-3 w-80 shadow-3xl">
         <h1 className="text-3xl font-bold text-stone-50 mb-6">
           Sports Bracket Generator App
         </h1>
@@ -89,7 +89,9 @@ const Search: React.FC = () => {
             }}
           />
         </label>
+
         <Badges />
+
         <div className="mt-6 flex flex-col">
           <div className="relative w-full flex">
             <div className="mr-4">
@@ -114,6 +116,46 @@ const Search: React.FC = () => {
             </div>
           </div>
         </div>
+
+        <div className="mt-5 border-2 border-slate-300 rounded-md w-[140px] pl-2 py-1">
+          <div className="form-check">
+            <input
+              className="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+              type="radio"
+              name="flexRadioDefault"
+              id="16"
+              value={16}
+              onChange={e => {
+                setInfo({ ...info, total: parseInt(e.target.value) })
+              }}
+            />
+            <label
+              className="form-check-label inline-block text-gray-50 text-sm"
+              htmlFor="16"
+            >
+              16 Teams
+            </label>
+          </div>
+          <div className="form-check">
+            <input
+              className="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+              type="radio"
+              name="flexRadioDefault"
+              id="8"
+              value={8}
+              onChange={e => {
+                setInfo({ ...info, total: parseInt(e.target.value) })
+              }}
+            />
+            <label
+              className="form-check-label inline-block text-gray-50 text-sm"
+              htmlFor="8"
+            >
+              8 Teams
+            </label>
+          </div>
+        </div>
+
         <button
           className={`w-28 mt-5 py-2 px-4 bg-white text-orange-400 font-bold rounded-lg shadow-md border-orange-400 border-1 border-solid disabled:opacity-25 `}
           disabled={
@@ -142,7 +184,7 @@ const Search: React.FC = () => {
         {/* Alert */}
         <div>{tonggle.hasErrorDate && <Alert title="Invalid Date" />}</div>
       </div>
-
+      {/* Tree Braket */}
       <div className={`flex-1 ${colorBgTree} h-screen`}>
         {tonggle.showTree && !tonggle.hasErrorDate && <TreeBraket />}
       </div>
