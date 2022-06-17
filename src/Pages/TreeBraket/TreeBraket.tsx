@@ -16,7 +16,7 @@ const TreeBraket: React.FC = () => {
     final: rounds[]
   } = useRecoilValue(matchsState)
   return (
-    <div className="min-h-screen flex ml-8 relative">
+    <div className="min-h-screen flex ml-8 relative animate-fadeIn">
       <Round data={round16} name="Round16" right={true} />
       <Round
         data={quarterFinals}

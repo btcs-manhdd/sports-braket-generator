@@ -3,8 +3,8 @@ import { rounds } from "./interface"
 export const data: {
   name: string
   total: number
-  startingDate?: Date
-  endingDate?: Date
+  startingDate?: string
+  endingDate?: string
   round16: rounds[]
   quarterFinals: rounds[]
   semiFinals: rounds[]

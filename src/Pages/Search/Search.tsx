@@ -5,6 +5,7 @@ import { tonggleState } from "../../State/tonggleState"
 import Alert from "components/Alert/Alert"
 import Badges from "components/Badges/Badges"
 import TreeBraket from "Pages/TreeBraket/TreeBraket"
+import { laligaIcon, premierleagueIcon, seriaIcon } from "assets/images"
 
 const Search: React.FC = () => {
   const startInput = useRef<HTMLInputElement>(null)
@@ -14,9 +15,33 @@ const Search: React.FC = () => {
   const [info, setInfo] = useRecoilState(infoTournamentState)
   const [tonggle, setTonggle] = useRecoilState(tonggleState)
 
+  //Set background color tree braket
+  var colorBgTree: string = "bg-blue-200"
+  var icon: any = null
+  switch (info.name) {
+    case "Premier League":
+      colorBgTree = "bg-orange-400"
+      icon = premierleagueIcon
+      break
+    case "Seria":
+      colorBgTree = "bg-slate-500"
+      icon = seriaIcon
+      break
+    case "Laliga":
+      colorBgTree = "bg-yellow-400"
+      icon = laligaIcon
+      break
+    default:
+      colorBgTree = "bg-blue-200"
+  }
+
   const handleChangeStartDate = (e: any) => {
     if (!checkDate(e.target.value, info.endingDate) && info.endingDate) {
       setTonggle({ ...tonggle, hasErrorDate: true })
+      setInfo({
+        ...info,
+        startingDate: e.target.value
+      })
       return
     } else {
       setInfo({
@@ -29,6 +54,10 @@ const Search: React.FC = () => {
   const handleChangeEndDate = (e: any) => {
     if (!checkDate(info.startingDate, e.target.value) && info.startingDate) {
       setTonggle({ ...tonggle, hasErrorDate: true })
+      setInfo({
+        ...info,
+        endingDate: e.target.value
+      })
       return
     } else {
       setInfo({
@@ -40,9 +69,9 @@ const Search: React.FC = () => {
   }
 
   return (
-    <div className="relative flex">
+    <div className="relative flex w-full">
       {/* Form input */}
-      <div className="mt-10 ml-6 w-80">
+      <div className="mt-10 pl-3 w-80 shadow-3xl">
         <h1 className="text-3xl font-bold text-stone-50 mb-6">
           Sports Bracket Generator App
         </h1>
@@ -67,7 +96,7 @@ const Search: React.FC = () => {
               <label className="text-white text-sm">Starting date</label>
               <input
                 type="date"
-                value={startInput.current?.value}
+                value={info.startingDate}
                 onChange={handleChangeStartDate}
                 ref={startInput}
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input"
@@ -77,7 +106,7 @@ const Search: React.FC = () => {
               <label className="text-white text-sm">Ending date</label>
               <input
                 type="date"
-                value={endInput.current?.value}
+                value={info.endingDate}
                 onChange={handleChangeEndDate}
                 ref={endInput}
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input"
@@ -103,8 +132,8 @@ const Search: React.FC = () => {
             setInfo({
               name: " ",
               total: 0,
-              startingDate: undefined,
-              endingDate: undefined
+              startingDate: "",
+              endingDate: ""
             })
           }}
         >
@@ -114,8 +143,11 @@ const Search: React.FC = () => {
         <div>{tonggle.hasErrorDate && <Alert title="Invalid Date" />}</div>
       </div>
 
-      <div className="flex-1 bg-orange-400 h-screen">
-        {tonggle.showTree && <TreeBraket />}
+      <div className={`flex-1 ${colorBgTree} h-screen`}>
+        {tonggle.showTree && !tonggle.hasErrorDate && <TreeBraket />}
+      </div>
+      <div className="absolute top-5 w-20 right-10">
+        {icon && <img src={icon} alt="logo" />}
       </div>
     </div>
   )

@@ -1,4 +1,5 @@
 import { infoTournamentState } from "State/infoTournamentState"
+import { tonggleState } from "State/tonggleState"
 import { useRecoilState } from "recoil"
 
 interface propsBadgeItem {
@@ -23,27 +24,28 @@ const BadgeItem: React.FC<propsBadgeItem> = ({
 }
 
 const Badges: React.FC = () => {
-
   const [info, setInfo] = useRecoilState(infoTournamentState)
+  const [tonggle, setTonggle] = useRecoilState(tonggleState)
 
   const handleSetName = (name: string) => {
-    setInfo({...info, name: name})
+    setInfo({ ...info, name: name })
+    setTonggle({...tonggle, showTree: false})
   }
   return (
     <div className="space-x-4 mt-2">
       <BadgeItem
         title="Premier League"
-        color="text-purple-800 bg-purple-100"
+        color="text-white bg-orange-400"
         handleSetName={handleSetName}
       />
       <BadgeItem
         title="Laliga"
-        color="text-cyan-800 bg-cyan-100"
+        color="text-white bg-yellow-400"
         handleSetName={handleSetName}
       />
       <BadgeItem
         title="Seria"
-        color="text-slate-800 bg-slate-100"
+        color="text-white bg-slate-500"
         handleSetName={handleSetName}
       />
     </div>
